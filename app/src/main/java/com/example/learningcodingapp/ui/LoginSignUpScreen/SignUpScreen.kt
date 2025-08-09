@@ -1,6 +1,7 @@
+
+
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.example.learningcodingapp.ui
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
@@ -12,7 +13,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
@@ -21,7 +21,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.SolidColor
@@ -58,7 +57,7 @@ private object DimensSU {
 }
 
 @Composable
-fun SignUpScreen_ProUI() {
+fun SignUpScreen() {
     var user by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var pass by remember { mutableStateOf("") }
@@ -68,7 +67,7 @@ fun SignUpScreen_ProUI() {
         modifier = Modifier
             .fillMaxSize()
             .background(PageBg)
-            .padding(horizontal = DimensSU.ScreenHPad)
+
     ) {
         BackgroundBlobs_SignUp()
 
@@ -76,8 +75,9 @@ fun SignUpScreen_ProUI() {
             modifier = Modifier
                 .fillMaxSize()
                 .systemBarsPadding()
-                .padding(horizontal = 24.dp , vertical = 96.dp)
-                .verticalScroll(rememberScrollState())
+                .padding(horizontal = DimensSU.ScreenHPad, vertical = 0.dp) // هنا البادينق
+                .verticalScroll(rememberScrollState()),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(Modifier.height(DimensSU.TopSpacer))
 
@@ -181,7 +181,6 @@ fun SignUpScreen_ProUI() {
                     ),
                     colors = ButtonDefaults.outlinedButtonColors(contentColor = Primary)
                 ) {
-
                     Spacer(Modifier.width(6.dp))
                     Text("Log in")
                 }
@@ -258,6 +257,6 @@ private fun BackgroundBlobs_SignUp() {
 
 @Preview(showBackground = true)
 @Composable
-private fun Preview_SignUpScreen_ProUI() {
-    MaterialTheme { SignUpScreen_ProUI() }
+private fun Preview_SignUpScreen() {
+    MaterialTheme { SignUpScreen() }
 }
